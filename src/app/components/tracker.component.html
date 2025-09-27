@@ -1,0 +1,24 @@
+<div class="tracker">
+    <h2>Rastreador</h2>
+    <div *ngIf="(items$ | async) as items">
+        <div *ngIf="!items.length">Nenhum item rastreado.</div>
+        <div *ngFor="let it of items" class="card">
+            <img [src]="it.thumbnail" width="80" alt="thumb" />
+            <div class="info">
+                <a [href]="it.permalink" target="_blank">{{ it.title }}</a>
+                <div>
+                    Preço atual: {{ it.history[0].price | currency:'BRL' }}
+                </div>
+                <div>
+                    Histórico (últimos 5):
+                    <ul>
+                        <li *ngFor="let h of it.history | slice:0:5">
+                            {{ h.price | currency:'BRL' }} — {{ h.ts | date:'short' }}
+                        </li>
+                    </ul>
+                </div>
+                <button (click)="remove(it.id)">Remover</button>
+            </div>
+        </div>
+    </div>
+</div>

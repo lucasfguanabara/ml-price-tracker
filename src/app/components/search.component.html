@@ -1,0 +1,20 @@
+<div class="search">
+    <h2>Buscar produtos Mercado Livre</h2>
+    <div>
+        <input [(ngModel)]="q" placeholder="ex: iPhone 17" />
+        <button (click)="search()">Buscar</button>
+    </div>
+
+    <div *ngIf="loading">Buscando...</div>
+
+    <div *ngIf="results.length">
+        <ul>
+            <li *ngFor="let p of results">
+                <img [src]="p.thumbnail" width="60" alt="thumb" />
+                <a [href]="p.permalink" target="_blank">{{p.title}}</a>
+                <strong>{{p.price | currency:'BRL'}}</strong>
+                <button (click)="track(p)">Rastrear</button>
+            </li>
+        </ul>
+    </div>
+</div>

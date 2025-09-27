@@ -1,0 +1,25 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>PriceTracker</title>
+  <base href="/">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="icon" type="image/x-icon" href="favicon.ico">
+</head>
+<body>
+  <app-root></app-root>
+  <script>
+
+    this.productService.getItem(id).subscribe({
+      next: (item) => {
+
+      },
+      error: (err) => {
+        this.errorMessage = 'Erro na busca';
+        console.error('Erro ao buscar item:', err);
+      }
+    });
+  </script>
+</body>
+</html>
